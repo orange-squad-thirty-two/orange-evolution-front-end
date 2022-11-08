@@ -4,6 +4,7 @@ import JsCookie from 'js-cookie';
 import Logo from '../../assets/images/logo.svg';
 import ImageHome from '../../assets/images/image-home.svg';
 import CustomButton from '../../components/CustomButton';
+import SideBarTrail from '../../components/SideBarTrail';
 
 export default function Home() {
   const [userData, setUserData] = useState('');
@@ -16,7 +17,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="">
+      <SideBarTrail />
       <div className="flex flex-col h-screen mt-20">
         <div className="justify-items-center self-center">
           <h1 className="text-[25px]">Bem vindo ao</h1>
@@ -24,7 +26,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center justify-center h-2/3">
           <h2 className="text-[25px]">
-            <span className="border-b-[3px] border-[#FF7823]">{userData}</span>, você
+            <span className="border-b-[3px] border-[#ff7823]">{userData}</span>, você
             ainda não começou
           </h2>
           <h2 className="text-[25px]">nenhuma trilha</h2>

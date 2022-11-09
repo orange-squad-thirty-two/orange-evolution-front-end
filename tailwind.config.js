@@ -8,6 +8,11 @@ module.exports = {
       lg: ['20px', '28px'],
       xl: ['36px', '36px'],
     },
+    colors: {
+      tema: '#FF7823',
+      texto: '#353131',
+      titulo: '#FF3200',
+    },
     backgroundImage: {
       'login-not': 'none',
       'login-gradient':

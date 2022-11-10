@@ -10,11 +10,10 @@ import { useHomeContext } from '../../context/HomeProvider';
 export default function Home() {
   const [userData, setUserData] = useState('');
   const { showSlide, setShowSlide } = useHomeContext();
+
   useEffect(() => {
     const token = JsCookie.get('token');
-
     const user = JWT(token);
-    console.log(user);
     setUserData(user.payload.nome);
   }, []);
 

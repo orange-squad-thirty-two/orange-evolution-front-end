@@ -1,0 +1,17 @@
+.title-trial {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    margin: 51px 0 31px 76px;
+    cursor: default;
+}
+
+.description-trial {
+    margin: 0 107px;
+}
+
+.sub-title-trial {
+    margin: 0 107px 30px 107px;
+    font-size: 20px;
+}

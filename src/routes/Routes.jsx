@@ -10,7 +10,6 @@ export function Routes() {
     <Switch>
       <GlobalProvider>
         <Route exact path="/" component={Login} />
-
         <Route path="/register" component={Register} />
         <HomeProvider>
           <Route path="/home" component={Home} />

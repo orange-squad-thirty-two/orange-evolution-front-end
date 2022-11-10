@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nome": "Full Stack",
+    "image": "https://orange-evolution.s3.us-west-004.backblazeb2.com/cursos/fullstack-image.svg",
+    "description": "Uma trilha para você que quer tornar-se um desenvolvedor",
+    "alt": "Imagem da trilha de Full Stack"
+  },
+  {
+    "id": 2,
+    "nome": "Ux/Ui",
+    "image": "https://orange-evolution.s3.us-west-004.backblazeb2.com/cursos/ux-ui-image.svg",
+    "description": "Um alto contraste de cores facilita a leitura",
+    "alt": "Imagem da trilha de UX/UI"
+  },
+  {
+    "id": 3,
+    "nome": "QA",
+    "image": "https://orange-evolution.s3.us-west-004.backblazeb2.com/cursos/qa-image.svg",
+    "description": "Uma trilha para você que gosta de qualidade",
+    "alt": "Imagem da trilha de QA"
+  }
+]

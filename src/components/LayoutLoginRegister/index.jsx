@@ -3,13 +3,7 @@ export default function LayoutLoginRegister({ children, title }) {
   return (
     <div>
       <div className="flex">
-        <div
-          style={{
-            background:
-              'linear-gradient(324.33deg, #FF7823 1.18%, rgba(255, 120, 35, 0) 50.24%)',
-          }}
-          className="flex flex-col justify-center items-center w-[60%] h-screen rounded-[3px]"
-        >
+        <div className="hidden lg:flex flex-col bg-login-gradient justify-center items-center w-[60%] h-screen rounded-[3px]">
           <h1 className="text-[36px] mb-[84px] text-[#353131]">{title}</h1>
           <div className="hidden lg:flex">
             <img
@@ -19,7 +13,7 @@ export default function LayoutLoginRegister({ children, title }) {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center w-[40%]">
+        <div className="bg-login-gradient h-screen w-full lg:flex lg:flex-col lg:items-center lg:justify-center lg:w-[40%] lg:bg-login-not">
           {children}
         </div>
       </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import JsCookie from 'js-cookie';
 import { api } from '../services/api';
 
-export const useRequest = (url) => {
+export const useRequestGet = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

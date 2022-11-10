@@ -39,7 +39,7 @@ export default function Login() {
   return (
     <LayoutLoginRegister title="Você voltou!">
       <ToastContainer />
-      <>
+      <div className="flex flex-col justify-center items-center h-screen">
         <div className="mb-12">
           <p className="text-[25px] text-center">Que bom vê-lo</p>
           <p className="text-[25px] text-center">novamente!</p>
@@ -78,7 +78,7 @@ export default function Login() {
         >
           Entrar
         </CustomButton>
-      </>
+      </div>
     </LayoutLoginRegister>
   );
 }

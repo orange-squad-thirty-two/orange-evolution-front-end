@@ -9,8 +9,8 @@ export default function Cards({ image, altImage, trail, text }) {
         </div>
         <div className="text-center">
           <div
-            className="flex items-center justify-center sm:m-[6px] text-center sm:text-[12px] 
-          sm:w-[60px] h-10 sm:h-5 text-[#353131] rounded-t-[30px] sm:rounded-[30px] bg-[#FF7823]"
+            className="flex items-center justify-center md:m-[6px] text-center md:text-[12px] 
+          md:w-[105px] h-10 md:h-5 text-[#353131] rounded-t-[30px] md:rounded-[30px] bg-[#FF7823]"
           >
             {trail}
           </div>

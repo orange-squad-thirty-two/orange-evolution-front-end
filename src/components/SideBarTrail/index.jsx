@@ -11,16 +11,26 @@ export default function SideBarTrail() {
   return (
     <>
       <div
-        className={`hidden md:flex flex-col h-5/6 
-      w-[973px] bg-[#ffffff] shadow-[8px_8px_0px_0px_rgb(255,50,0)] md:justify-end border rounded-[30px] 
+        className={`hidden md:flex flex-col
+      w-[973px] bg-[#ffffff] shadow-[0px_08px_0px_0px_rgb(255,50,0)] md:justify-end border rounded-[30px] 
        md:p-10 md:pl-10 md:pr-20 text-white fixed  md:h-[430px] z-40 -left-[950px] md:-left-[900px] 
        ease-in-out duration-300 top-10 md:top-1/4 
       ${showSlide ? 'translate-x-0 ' : 'translate-x-[650px] sm:translate-x-[870px]'} `}
-        onClick={() => setShowSlide(!showSlide)}
+        // onClick={() => setShowSlide(false)}
       >
-        <h2 className="z-50 text-center m-2 sm:m-4 text-[22px] sm:text-[35px] text-[#353131]">
-          Escolha sua trilha
-        </h2>
+        <div className="flex justify-evenly w-[973px] z-50">
+          <div />
+          <h2 className="z-50 text-center m-2 sm:m-4 text-[22px] sm:text-[35px] text-[#353131]">
+            Escolha sua trilha
+          </h2>
+          <button
+            className="w-[46px] h-[46px] p-2"
+            type="button"
+            onClick={() => setShowSlide(true)}
+          >
+            <img src={Close} alt="Botão para fechar" />
+          </button>
+        </div>
         <div className="flex flex-col md:w-[800px] w-[973px] md:flex-row items-center justify-center">
           <Cards
             image={uxUiImage}
@@ -41,6 +51,10 @@ export default function SideBarTrail() {
             trail="QA"
           />
         </div>
+        <button
+          className="absolute h-[428px] w-10 bg-titulo top-[0.5px] right-0 rounded-r-[30px]"
+          onClick={() => setShowSlide(false)}
+        ></button>
       </div>
       <div className="md:hidden">
         <button

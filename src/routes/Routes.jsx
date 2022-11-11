@@ -4,17 +4,20 @@ import HomeProvider from '../context/HomeProvider';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register/Index';
+import { PrivateRouter } from './PrivateRouter';
 
 export function Routes() {
   return (
     <Switch>
-      <GlobalProvider>
-        <Route exact path="/" component={Login} />
-        <Route path="/register" component={Register} />
-        <HomeProvider>
-          <Route path="/home" component={Home} />
-        </HomeProvider>
-      </GlobalProvider>
+      <Route exact path="/" component={Login} />
+      <Route path="/register" component={Register} />
+      <PrivateRouter>
+        <GlobalProvider>
+          <HomeProvider>
+            <Route path="/home" component={Home} />
+          </HomeProvider>
+        </GlobalProvider>
+      </PrivateRouter>
     </Switch>
   );
 }

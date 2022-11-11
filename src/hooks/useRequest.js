@@ -7,9 +7,9 @@ export const useRequestGet = (url) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const token = JsCookie.get('token');
   useEffect(() => {
     const fn = async () => {
-      const token = JsCookie.get('token');
       setLoading(true);
       try {
         const response = await api.get(url, {

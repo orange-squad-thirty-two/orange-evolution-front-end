@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import JWT from 'jwt-decode';
 import JsCookie from 'js-cookie';
 import iconProgress from '../../assets/icons/icon-progress.svg';
-import { useRequest } from "../../hooks/useRequest";
+import { useRequestGet } from "../../hooks/useRequest";
 import './style.css';
 import { SplitArrayModules } from "../../utility/functions";
 import ClassModules from "../ClassModules/ClassModules";
@@ -18,8 +18,8 @@ function TrailSelected({ trails }) {
     const [classes, setClasses] = useState([]);
     const [modules, setModules] = useState([]);
     const [userData, setUserData] = useState(false);
-    const trailChoose = useRequest("/trails/choose");
-    const classesTrails = useRequest(`/classes/${id}`);
+    const trailChoose = useRequestGet("/trails/choose");
+    const classesTrails = useRequestGet(`/classes/${id}`);
 
     useEffect(() => {
         function pathName() {

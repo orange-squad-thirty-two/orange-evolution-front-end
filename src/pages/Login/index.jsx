@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import JsCookie from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import InputCustom from '../../components/CustomInput';
 import LayoutLoginRegister from '../../components/LayoutLoginRegister';
 import { loginRequest } from '../../services/api';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton';
 
 const CONFIG_TOAST = {
@@ -21,6 +21,7 @@ const CONFIG_TOAST = {
 
 export default function Login() {
   const history = useHistory();
+  const [showPassword, setShowPassword] = useState(false);
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
 
@@ -34,6 +35,10 @@ export default function Login() {
         return toast.error(error.response.data.message, CONFIG_TOAST);
       }
     }
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -54,21 +59,36 @@ export default function Login() {
               id="email"
               value={inputEmail}
               onChange={(e) => setInputEmail(e.target.value)}
-              className="p-2 w-[336px] h-10 border border-[#5B5B5B] rounded-lg text-[#353131]"
+              className="p-2 w-[300px] md:w-[336px] h-10 border border-[#5B5B5B] rounded-lg text-[#353131]"
             />
           </label>
         </div>
         <div className="mt-2">
           <label className="flex flex-col" htmlFor="password">
             Senha
-            <InputCustom
-              type="password"
-              name="password"
-              id="password"
-              value={inputPassword}
-              onChange={(e) => setInputPassword(e.target.value)}
-              className="p-2 w-[336px] h-10 border border-[#5B5B5B] rounded-lg"
-            />
+            <div className="w-full flex justify-end items-center relative">
+              <InputCustom
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                id="password"
+                value={inputPassword}
+                onChange={(e) => setInputPassword(e.target.value)}
+                className="p-2 w-[300px] md:w-[336px] h-10 border border-[#5B5B5B] rounded-lg"
+              />
+              {showPassword ? (
+                <IoEyeOutline
+                  className="absolute mr-2 w-10"
+                  onClick={handleClickShowPassword}
+                  cursor="pointer"
+                />
+              ) : (
+                <IoEyeOffOutline
+                  className="absolute mr-2 w-10"
+                  onClick={handleClickShowPassword}
+                  cursor="pointer"
+                />
+              )}
+            </div>
           </label>
         </div>
         <CustomButton
@@ -78,6 +98,12 @@ export default function Login() {
         >
           Entrar
         </CustomButton>
+        <p className="text-texto mt-4">
+          Ainda não possui conta?{' '}
+          <Link to="/register" className="text-titulo md:text-tema">
+            Clique aqui
+          </Link>
+        </p>
       </div>
     </LayoutLoginRegister>
   );

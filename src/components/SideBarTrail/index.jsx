@@ -1,9 +1,18 @@
 import Cards from '../Cards';
 import Close from '../../assets/icons/close.svg';
 import { useHomeContext } from '../../context/HomeProvider';
+import { useGlobalContext } from '../../context/GlobalProvider';
+import { useHistory } from 'react-router-dom';
 
 export default function SideBarTrail() {
-  const { showSlide, setShowSlide, data, loading } = useHomeContext();
+  const history = useHistory();
+  const { showSlide, setShowSlide } = useHomeContext();
+  const { trailsId, setTrailsId, dataTrails, selectTrailsData } = useGlobalContext();
+
+  const handleSelectTrail = async (id) => {
+    setTrailsId([...trailsId, id]);
+    history.push('/trails');
+  };
 
   return (
     <>
@@ -28,10 +37,10 @@ export default function SideBarTrail() {
           </button>
         </div>
         <div className="flex flex-col md:w-[800px] w-[973px] md:flex-row items-center justify-center">
-          {loading ? (
+          {dataTrails.loading ? (
             <p>Carregando...</p>
           ) : (
-            data
+            dataTrails.data
               .filter((item) => item.nome !== 'Início')
               .map((item) => (
                 <Cards
@@ -40,6 +49,9 @@ export default function SideBarTrail() {
                   altImage={item.alt}
                   text={item.subtitulo}
                   trail={item.nome.split(' ')[0]}
+                  functionCallBack={() => handleSelectTrail(item.id)}
+                  isDisabled={selectTrailsData.some((t) => t.id === item.id)}
+                  isRegistered={false}
                 />
               ))
           )}
@@ -83,23 +95,29 @@ export default function SideBarTrail() {
             </button>
           </div>
           <ul className="flex flex-col">
-            {loading ? (
+            {dataTrails.loading ? (
               <p>Carregando...</p>
             ) : (
-              data
+              dataTrails.data
                 .filter((trail) => trail.nome !== 'Início')
                 .map((trail) => (
-                  <li
+                  <button
                     key={trail.id}
-                    className="bg-[#ff7823] w-full h-8 mb-2 text-center p-1"
-                    onClick={() => {
-                      console.log(trail.id);
-                    }}
+                    className="bg-[#ff7823] w-full h-8 mb-2 text-center p-1 disabled:opacity-75"
+                    onClick={() => handleSelectTrail(trail.id)}
+                    type="button"
+                    disabled={selectTrailsData.some((t) => t.id === trail.id)}
                   >
                     {trail.nome}
-                  </li>
+                  </button>
                 ))
             )}
+            <a
+              href="#ultimas-aulas"
+              className="bg-[#ff7823] w-full h-8 mt-7 text-center p-1"
+            >
+              Últimas Aulas
+            </a>
           </ul>
         </aside>
       </div>

@@ -5,6 +5,8 @@ import JsCookie from 'js-cookie';
 import iconProgress from '../../assets/icons/icon-progress.svg';
 import { useRequest } from "../../hooks/useRequest";
 import './style.css';
+import { SplitArrayModules } from "../../utility/functions";
+import ClassModules from "../ClassModules/ClassModules";
 
 
 function TrailSelected({ trails }) {
@@ -14,6 +16,7 @@ function TrailSelected({ trails }) {
     const [subTitle, setSubTitle] = useState("");
     const [trail, setTrail] = useState(false);
     const [classes, setClasses] = useState([]);
+    const [modules, setModules] = useState([]);
     const [userData, setUserData] = useState(false);
     const trailChoose = useRequest("/trails/choose");
     const classesTrails = useRequest(`/classes/${id}`);
@@ -36,13 +39,18 @@ function TrailSelected({ trails }) {
 
     }, [trailChoose, id, trails, setTrail, classesTrails, setClasses]);
     useEffect(() => {
-
-    })
+        if (classes.length) {
+            const array = SplitArrayModules(classes, 5)
+            console.log(array)
+            setModules(array)
+        }
+    }, [classes, setModules])
     useEffect(() => {
         const token = JsCookie.get('token');
         const user = JWT(token);
         setUserData(user.payload.nome);
     }, [setUserData]);
+
 
     return (
         <div className="relative">
@@ -71,14 +79,13 @@ function TrailSelected({ trails }) {
                     </div>
                 </div>
             }
-            {
-                classes.map(classe => {
+            {classes.length ?
+                modules.map((classes, index) => {
                     return (
-                        <div key={classe.id}>
-                            <h1>{classe.titulo}</h1>
-                        </div>
+                        <ClassModules key={index} index={index + 1} classes={classes} name={name} id={id} />
                     )
                 })
+                : ""
             }
         </div>
     )

@@ -1,8 +1,8 @@
 .container-trails {
     width: 1138px;
     height: 1697px;
-    background-color: #FF3200;
-    border: 1px solid #353131;
+    background-color: var(--color-primary-title);
+    border: 1px solid var(--color-primary-text);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     margin-bottom: 66px;
@@ -12,7 +12,7 @@
     margin-top: 12px;
     width: 994px;
     height: 1651.77px;
-    background: #FEFEFE;
+    background: var(--color-scale-gray-8);
     border-radius: 13px;
-    border: 1px solid #353131;
+    border: 1px solid var(--color-primary-text);
 }

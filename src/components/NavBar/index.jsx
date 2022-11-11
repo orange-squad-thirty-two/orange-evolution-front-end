@@ -1,10 +1,8 @@
 import JSCookie from 'js-cookie';
-import { useHistory, useLocation } from 'react-router-dom';
-import CustomButtonSmall from '../CustomButtonSmall';
+import { useHistory } from 'react-router-dom';
 
 export default function NavBar() {
   const history = useHistory();
-  const { pathname } = useLocation();
 
   const handleExitApp = () => {
     JSCookie.remove('token');
@@ -12,9 +10,9 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="hidden md:flex md:h-12 border-b border-[#353131] m:w-full md:justify-around md:items-center">
-      <h3>{pathname.split('/')}</h3>
-      <CustomButtonSmall onClick={handleExitApp}>Sair</CustomButtonSmall>
+    <nav className="md:hidden flex h-12 w-full px-3 justify-between items-center">
+      <div></div>
+      <button onClick={handleExitApp}>Sair</button>
     </nav>
   );
 }

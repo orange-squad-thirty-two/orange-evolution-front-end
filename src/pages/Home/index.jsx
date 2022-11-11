@@ -48,7 +48,7 @@ export default function Home() {
           </div>
           {selectTrailsData.length > 0 ? (
             <div className="flex flex-col  mt-10 items-center justify-center h-2/3">
-              <h2 className="text-[16px] md:text-[25px] w-[210px] md:w-[80%]">
+              <h2 className="text-[16px] md:text-[25px] w-[210px] md:w-[80%] mb-3">
                 <span className="md:text-[25px] border-b-[3px] border-[#ff7823]">
                   {userData}
                 </span>

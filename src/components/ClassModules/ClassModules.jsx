@@ -3,11 +3,16 @@ import iconNext from '../../assets/icons/icon-next.svg'
 import { Link } from 'react-router-dom';
 
 function ClassModules({ classes, index, name, id }) {
+    const nameTrail = name.split("")
+    const newNameTrail = nameTrail.map((caracter) => {
+        return caracter === " " ? "-" : caracter
+    });
+
     return (
         <div className="relative div-modules-container ">
             <div className='div-modules-flex'>
                 <h1 className='title-modules'>Módulo {index}</h1>
-                <Link to={`/trail/${id}/${name.replace(" ", "-")}/${index}`}>
+                <Link to={`/trail/${id}/${newNameTrail.reduce((acum, value) => acum + value)}/${index}`}>
                     <img src={iconNext} alt={`Clique para assistir as aulas do Módulo ${1} do curso`} />
                 </Link>
             </div>

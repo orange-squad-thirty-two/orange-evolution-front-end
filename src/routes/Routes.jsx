@@ -5,19 +5,22 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register/Index';
 import Trails from '../pages/Trails/Trails';
+import { PrivateRouter } from './PrivateRouter';
 
 export function Routes() {
     return (
         <Switch>
-            <GlobalProvider>
-                <Route exact path="/" component={Login} />
-                <Route path="/register" component={Register} />
-                <Route path="/register" component={Register} />
-                <Route exact path="/trails/:id" component={Trails} />
-                <HomeProvider>
-                    <Route path="/home" component={Home} />
-                </HomeProvider>
-            </GlobalProvider>
+            <Route exact path="/" component={Login} />
+            <Route path="/register" component={Register} />
+            <PrivateRouter>
+                <GlobalProvider>
+                    <Route exact path="/trails/:id" component={Trails} />
+                    <HomeProvider>
+                        <Route path="/home" component={Home} />
+                    </HomeProvider>
+                </GlobalProvider>
+            </PrivateRouter>
         </Switch>
     );
 }
+

@@ -13,3 +13,12 @@ export function SplitArrayModules(array, valueClasses) {
     }
     return newArray
 }
+export function calculateProgress(array) {
+    let classesAll = array.length
+    let classesCompleted = array.filter((classe) => {
+        return classe.status.toLowerCase() === "concluido"
+    })
+    let progress = (100 / classesAll) * classesCompleted.length
+    console.log(progress)
+    return progress
+}

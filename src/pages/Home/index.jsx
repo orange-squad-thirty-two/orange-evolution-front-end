@@ -25,8 +25,8 @@ export default function Home() {
   useEffect(() => {
     const compareTrilha = () => {
       if (dataTrails.data !== null) {
-        const result = dataTrails.data.filter((item) =>
-          dataSelectTrails.data.find((t) => t.id === item.id),
+        const result = dataTrails.data?.filter((item) =>
+          dataSelectTrails.data?.find((t) => t.id === item.id),
         );
 
         return setSelectTrailsData(result);

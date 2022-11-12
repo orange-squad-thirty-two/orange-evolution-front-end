@@ -68,3 +68,11 @@
     position: absolute;
     bottom: -3px;
 }
+
+.btn-next-classe {
+    margin-left: 700px;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

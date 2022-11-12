@@ -19,6 +19,7 @@ function ModulesClasses() {
     const [trailsAll, setTrailAll] = useState(trails);
     const [modulesArray, setModulesArray] = useState([]);
     const [classeSelected, setClasseSelected] = useState({});
+    const [qtdModules, setQtdModules] = useState(0);
 
     useEffect(() => {
         if (dataTrails.data) {
@@ -35,9 +36,10 @@ function ModulesClasses() {
                 console.log("rende")
                 if (response.data.length) {
                     const array = SplitArrayModules(response.data, 5);
-                    const modulesSelected = array.slice(modulesClasses - 1, modulesClasses)
+                    const modulesSelected = array.slice(modulesClasses - 1, modulesClasses);
+                    setQtdModules(array.length);
                     setModulesArray(modulesSelected[0]);
-                    setClasseSelected(modulesSelected[0][0])
+                    setClasseSelected({ ...modulesSelected[0][0], index: 0 })
                 }
             } catch (error) {
                 console.log(error)
@@ -59,7 +61,6 @@ function ModulesClasses() {
             setClasseSelected({ ...classeSelected, status: "Concluido" });
             const localModulesArray = [...modulesArray];
             const findClasse = localModulesArray.find(classe => classe.id === classeSelected.id)
-            console.log(findClasse)
             findClasse.status = "Concluido"
             setModulesArray(localModulesArray)
         } catch (error) {
@@ -67,6 +68,17 @@ function ModulesClasses() {
         }
     }
 
+    function handleNextClasse() {
+        const localModulesArray = [...modulesArray];
+        const findClasseIndex = localModulesArray.findIndex(classe => classe.id === classeSelected.id);
+        console.log(classeSelected)
+
+        if (findClasseIndex > 3) {
+        } else {
+            setClasseSelected({ ...localModulesArray[findClasseIndex + 1], index: findClasseIndex + 1 });
+        }
+
+    }
     return (
         <>
             <Header trails={trailsAll} />
@@ -82,7 +94,7 @@ function ModulesClasses() {
 
                             <div key={classe.id}>
                                 <button
-                                    onClick={() => setClasseSelected(classe)}
+                                    onClick={() => setClasseSelected({ ...classe, index })}
                                     className="btn-classes-modules"
                                 >
                                     <img
@@ -99,9 +111,14 @@ function ModulesClasses() {
                     })}
                 </aside>
                 <div className="">
-                    <ModalClasse modulesClasses={modulesClasses}
+                    <ModalClasse
+                        modulesClasses={modulesClasses}
                         handleStatusClasse={handleStatusClasse}
-                        classeSelected={classeSelected} />
+                        classeSelected={classeSelected}
+                        handleNextClasse={handleNextClasse}
+                        modulesArray={modulesArray}
+                        qtdModules={qtdModules}
+                    />
                 </div>
             </section>
         </>

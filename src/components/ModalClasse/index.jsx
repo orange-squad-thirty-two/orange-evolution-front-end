@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import buttonPrev from '../../assets/icons/icon-prev.svg';
+import CardRedirectToClasse from "../CardRedirectToClasse";
 import "./style.css";
 
 function ModalClasse({ modulesClasses, classeSelected }) {
     const { id } = useParams();
     const [clickedLink, setClickedLink] = useState(false);
+    const [modalCard, setModalCard] = useState(false)
     const history = useHistory();
 
     useEffect(() => {
@@ -19,7 +21,6 @@ function ModalClasse({ modulesClasses, classeSelected }) {
 
     return (
         <div className="relative">
-
             <img
                 className="icon-btn-prev-classe"
                 onClick={() => navigate()}
@@ -47,15 +48,20 @@ function ModalClasse({ modulesClasses, classeSelected }) {
                         </div>
                     }
                 </div>
-
-                <a
-                    className="link-to-classe"
-                    href={classeSelected.url}
-                    target="_blanck"
-                    onClick={() => setClickedLink(true)}
-                >
-                    <span>Acesse o conteúdo da aula aqui!</span>
-                </a>
+                {modalCard &&
+                    <CardRedirectToClasse
+                        url={classeSelected.url}
+                        setClickedLink={setClickedLink}
+                        setModalCard={setModalCard} />
+                }
+                {!modalCard &&
+                    <div
+                        className="link-to-classe"
+                        onClick={() => setModalCard(!modalCard)}
+                    >
+                        <span>Acesse o conteúdo da aula aqui!</span>
+                    </div>
+                }
             </div>
 
         </div>

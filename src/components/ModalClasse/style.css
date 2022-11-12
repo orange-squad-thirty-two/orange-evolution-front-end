@@ -54,16 +54,17 @@
 
 .link-to-classe {
     position: relative;
-    width: 288px;
+    width: 290px;
     margin-top: 70px;
     margin-left: 311px;
     padding: -1px 10px;
     border-bottom: 2px solid var(--color-primary-title);
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .link-to-classe span {
-    padding: 0px 20px;
+    padding: 0px 10px;
     position: absolute;
     bottom: -3px;
 }

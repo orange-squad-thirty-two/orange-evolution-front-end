@@ -1,11 +1,24 @@
 import './style.css';
 import iconNext from '../../assets/icons/icon-next.svg'
 import { Link } from 'react-router-dom';
+import { useTrails } from '../../context/TrailsProvider';
+import { useEffect } from 'react';
 
 function ClassModules({ classes, index, name, id }) {
+    const { setModulesClasses } = useTrails();
+
+    useEffect(() => {
+        setModulesClasses(classes);
+    }, [classes, setModulesClasses])
     const nameTrail = name.split("")
     const newNameTrail = nameTrail.map((caracter) => {
-        return caracter === " " ? "-" : caracter
+        if (caracter === " ") {
+            return "-"
+        } else if (caracter === "/") {
+            return "-"
+        } else {
+            return caracter
+        }
     });
 
     return (

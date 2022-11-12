@@ -3,19 +3,20 @@ import JWT from 'jwt-decode';
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import iconProgress from '../../assets/icons/icon-progress.svg';
+import { useTrails } from '../../context/TrailsProvider';
 import { api, createSelectTrails } from "../../services/api";
 import { calculateProgress, SplitArrayModules } from "../../utility/functions";
 import ClassModules from "../ClassModules/ClassModules";
 import './style.css';
 
-function TrailSelected({ trails }) {
+function TrailSelected() {
     const token = JsCookie.get('token');
     const { id } = useParams()
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [subTitle, setSubTitle] = useState("");
     const barProgress = useRef(null);
-
+    const { setClassesAll } = useTrails()
     const [trail, setTrail] = useState(false);
     const [userData, setUserData] = useState(false);
 
@@ -23,6 +24,11 @@ function TrailSelected({ trails }) {
     const [modules, setModules] = useState([]);
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
         const user = JWT(token);
         setUserData(user.payload);
     }, [setUserData, token]);
@@ -52,6 +58,7 @@ function TrailSelected({ trails }) {
                     setClasses(classesTrail.data);
                     const array = SplitArrayModules(classesTrail.data, 5);
                     setModules(array);
+                    setClassesAll(array)
                 }
                 const trailsSelected = trailChoose.data.find(choose => choose.curso_id === Number(id));
                 if (trailsSelected) {
@@ -60,19 +67,21 @@ function TrailSelected({ trails }) {
                 } else {
                     setTrail(false);
                 }
-
-
             } catch (error) {
                 console.log(error)
             }
         }
         getAllTrails(id)
+
         function handleProgress(data) {
-            if (data) {
-                barProgress.current.style.width = `${calculateProgress(data)}%`
+            if (!barProgress.current) return
+            if (data && barProgress.current !== null) {
+                barProgress.current.style.width = `${calculateProgress(data)
+                    ? calculateProgress(data)
+                    : "0"}%`
             }
         }
-    }, [id])
+    }, [id, setClassesAll])
 
     return (
         <div className="relative">

@@ -1,11 +1,12 @@
 import JsCookie from 'js-cookie';
+import JWT from 'jwt-decode';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import iconCheck from '../../assets/icons/icon-check.svg';
 import iconDocs from '../../assets/icons/icon-docs.svg';
 import iconVideo from '../../assets/icons/icon-video.svg';
-import ModalClasse from '../../components/ModalClasse';
 import Header from "../../components/Header";
+import ModalClasse from '../../components/ModalClasse';
 import { useGlobalContext } from "../../context/GlobalProvider";
 import trails from "../../database/trails";
 import { api } from "../../services/api";
@@ -45,6 +46,27 @@ function ModulesClasses() {
         handleGetClasses()
     }, [id, modulesClasses])
 
+    async function handleStatusClasse() {
+        const token = JsCookie.get('token');
+        const { payload } = JWT(token);
+        const data = {
+            status: "Concluido",
+            curso_id: classeSelected.curso_id,
+            aula_id: classeSelected.id
+        }
+        try {
+            const response = await api.post(`/status/${payload.sub}`, data, { headers: { Authorization: token, } })
+            console.log(response)
+            setClasseSelected({ ...classeSelected, status: "Concluido" });
+            const localModulesArray = [...modulesArray];
+            const findClasse = localModulesArray.find(classe => classe.id === classeSelected.id)
+            console.log(findClasse)
+            findClasse.status = "Concluido"
+            setModulesArray(localModulesArray)
+        } catch (error) {
+
+        }
+    }
 
     return (
         <>
@@ -78,7 +100,9 @@ function ModulesClasses() {
                     })}
                 </aside>
                 <div className="">
-                    <ModalClasse modulesClasses={modulesClasses} classeSelected={classeSelected} />
+                    <ModalClasse modulesClasses={modulesClasses}
+                        handleStatusClasse={handleStatusClasse}
+                        classeSelected={classeSelected} />
                 </div>
             </section>
         </>

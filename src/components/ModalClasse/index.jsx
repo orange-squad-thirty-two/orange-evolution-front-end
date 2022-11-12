@@ -4,7 +4,7 @@ import buttonPrev from '../../assets/icons/icon-prev.svg';
 import CardRedirectToClasse from "../CardRedirectToClasse";
 import "./style.css";
 
-function ModalClasse({ modulesClasses, classeSelected }) {
+function ModalClasse({ modulesClasses, classeSelected, handleStatusClasse }) {
     const { id } = useParams();
     const [clickedLink, setClickedLink] = useState(false);
     const [modalCard, setModalCard] = useState(false)
@@ -44,7 +44,9 @@ function ModalClasse({ modulesClasses, classeSelected }) {
                     </h3>
                     {clickedLink && classeSelected.status !== "concluido" &&
                         <div className="div-btn-classe">
-                            <button className="btn-classe classe-no-checked">Concluir</button>
+                            <button className="btn-classe classe-no-checked"
+                                onClick={() => handleStatusClasse()}
+                            >Concluir</button>
                         </div>
                     }
                 </div>

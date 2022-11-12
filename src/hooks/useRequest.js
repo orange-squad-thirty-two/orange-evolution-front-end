@@ -14,7 +14,7 @@ export const useRequestGet = (url) => {
       try {
         const response = await api.get(url, {
           headers: {
-            Authorization: token,
+            Authorization: `Bearer ${token}`,
           },
         });
         setData(response.data);

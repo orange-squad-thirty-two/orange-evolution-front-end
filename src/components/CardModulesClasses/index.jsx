@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTrails } from '../../context/TrailsProvider';
 import { useEffect } from 'react';
 
-function ClassModules({ classes, index, name, id }) {
+function CardModulesClasses({ classes, index, name, id }) {
     const { setModulesClasses } = useTrails();
 
     useEffect(() => {
@@ -37,9 +37,7 @@ function ClassModules({ classes, index, name, id }) {
 
                             <div className='flex-row'>
                                 <span>Aula {index + 1}: {classe.titulo} </span>
-
                             </div>
-
                         </div>
                     )
                 })}
@@ -49,4 +47,4 @@ function ClassModules({ classes, index, name, id }) {
     )
 }
 
-export default ClassModules
+export default CardModulesClasses

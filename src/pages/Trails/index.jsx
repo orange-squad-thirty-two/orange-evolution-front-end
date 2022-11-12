@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Aside from "../../components/Aside/Aside"
-import Header from "../../components/Header/Header";
-import TrailSelected from "../../components/TrailSelected/TrailSelected";
+import Aside from "../../components/Aside"
+import Header from "../../components/Header";
+import TrailSelected from "../../components/TrailSelected/index.jsx";
 import { useGlobalContext } from "../../context/GlobalProvider";
 import trails from "../../database/trails"
 import './style.css';

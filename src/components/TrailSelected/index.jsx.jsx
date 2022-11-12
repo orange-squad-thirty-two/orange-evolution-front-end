@@ -6,7 +6,7 @@ import iconProgress from '../../assets/icons/icon-progress.svg';
 import { useTrails } from '../../context/TrailsProvider';
 import { api, createSelectTrails } from "../../services/api";
 import { calculateProgress, SplitArrayModules } from "../../utility/functions";
-import ClassModules from "../ClassModules/ClassModules";
+import ClassModules from "../CardModulesClasses";
 import './style.css';
 
 function TrailSelected() {
@@ -133,4 +133,4 @@ function TrailSelected() {
     )
 }
 
-export default TrailSelected
+export default TrailSelected;

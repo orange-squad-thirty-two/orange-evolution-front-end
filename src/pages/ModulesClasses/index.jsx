@@ -1,17 +1,18 @@
 import JsCookie from 'js-cookie';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../../components/Header/Header";
+import iconCheck from '../../assets/icons/icon-check.svg';
+import iconDocs from '../../assets/icons/icon-docs.svg';
+import iconVideo from '../../assets/icons/icon-video.svg';
+import ModalClasse from '../../components/ModalClasse';
+import Header from "../../components/Header";
 import { useGlobalContext } from "../../context/GlobalProvider";
 import trails from "../../database/trails";
 import { api } from "../../services/api";
 import { SplitArrayModules } from "../../utility/functions";
-import iconDocs from '../../assets/icons/icon-docs.svg';
-import iconVideo from '../../assets/icons/icon-video.svg';
 import './style.css';
 
 function ModulesClasses() {
-
     const { id, modulesClasses } = useParams()
     const { dataTrails } = useGlobalContext()
     const [trailsAll, setTrailAll] = useState(trails);
@@ -53,12 +54,9 @@ function ModulesClasses() {
                     <h3>informações</h3>
                     <div className="aside-modules-classes-div-button">
                         <button className="aside-modules-classes-button ">Material do Curso</button>
-
                     </div>
 
-
                     {modulesArray.map((classe, index) => {
-                        console.log(classe.tipo.toLowerCase())
                         return (
 
                             <div key={classe.id}>
@@ -70,13 +68,17 @@ function ModulesClasses() {
                                         src={classe.tipo.toLowerCase() === "vídeo" || classe.tipo.toLowerCase() === "live" ? iconVideo : iconDocs} alt={`
                                     Clique aqui para assistir a aula ${classe.titulo}`} />
                                     Aula {index + 1}
+
+                                    {classe.status.toLowerCase() === "concluido" &&
+                                        <img src={iconCheck} alt="icone de checkout da aula" />
+                                    }
                                 </button>
                             </div>
                         )
                     })}
                 </aside>
                 <div className="">
-                    <h1>{classeSelected.titulo}</h1>
+                    <ModalClasse modulesClasses={modulesClasses} classeSelected={classeSelected} />
                 </div>
             </section>
         </>

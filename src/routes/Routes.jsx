@@ -4,9 +4,9 @@ import HomeProvider from '../context/HomeProvider';
 import { TrailsProvider } from '../context/TrailsProvider';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
-import ModulesClasses from '../pages/ModulesClasses/Trails';
+import ModulesClasses from '../pages/ModulesClasses';
 import Register from '../pages/Register/Index';
-import Trails from '../pages/Trails/Trails';
+import Trails from '../pages/Trails';
 import { PrivateRouter } from './PrivateRouter';
 
 export function Routes() {

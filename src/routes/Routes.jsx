@@ -5,6 +5,7 @@ import { TrailsProvider } from '../context/TrailsProvider';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import ModulesClasses from '../pages/ModulesClasses';
+import NotFound from '../pages/NotFound';
 import Register from '../pages/Register/Index';
 import Trails from '../pages/Trails';
 import { PrivateRouter } from './PrivateRouter';
@@ -24,6 +25,7 @@ export function Routes() {
                     <HomeProvider>
                         <Route path="/home" component={Home} />
                     </HomeProvider>
+                    <Route path="*" component={NotFound} />
                 </GlobalProvider>
             </PrivateRouter>
         </Switch>

@@ -55,8 +55,7 @@ function ModulesClasses() {
             aula_id: classeSelected.id
         }
         try {
-            const response = await api.post(`/status/${payload.sub}`, data, { headers: { Authorization: token, } })
-            console.log(response)
+            await api.post(`/status/${payload.sub}`, data, { headers: { Authorization: token, } })
             setClasseSelected({ ...classeSelected, status: "Concluido" });
             const localModulesArray = [...modulesArray];
             const findClasse = localModulesArray.find(classe => classe.id === classeSelected.id)

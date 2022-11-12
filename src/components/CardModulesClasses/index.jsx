@@ -1,5 +1,6 @@
 import './style.css';
-import iconNext from '../../assets/icons/icon-next.svg'
+import iconNext from '../../assets/icons/icon-next.svg';
+import iconCheck from '../../assets/icons/icon-check.svg';
 import { Link } from 'react-router-dom';
 import { useTrails } from '../../context/TrailsProvider';
 import { useEffect } from 'react';
@@ -31,13 +32,18 @@ function CardModulesClasses({ classes, index, name, id }) {
             </div>
             <div className='div-modules'>
                 {classes.map((classe, index) => {
-
                     return (
-                        <div key={index} className="">
+                        <div className='div-classe-modules' key={index}>
+                            <p className='div-classe-modules-span'>Aula {index + 1}: {classe.titulo}
+                            </p>
 
-                            <div className='flex-row'>
-                                <span>Aula {index + 1}: {classe.titulo} </span>
-                            </div>
+                            {classe.status.toLowerCase() === "concluido" &&
+                                <img
+                                    className='icon-check-classe-modules'
+                                    src={iconCheck}
+                                    alt="icone de checkout da aula"
+                                />
+                            }
                         </div>
                     )
                 })}

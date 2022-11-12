@@ -6,7 +6,7 @@ import iconProgress from '../../assets/icons/icon-progress.svg';
 import { useTrails } from '../../context/TrailsProvider';
 import { api, createSelectTrails } from "../../services/api";
 import { calculateProgress, SplitArrayModules } from "../../utility/functions";
-import ClassModules from "../CardModulesClasses";
+import CardClassModules from "../CardModulesClasses";
 import './style.css';
 
 function TrailSelected() {
@@ -124,7 +124,13 @@ function TrailSelected() {
             {classes.length ?
                 modules.map((classes, index) => {
                     return (
-                        <ClassModules key={index} index={index + 1} classes={classes} name={name} id={id} />
+                        <CardClassModules
+                            key={index}
+                            index={index + 1}
+                            classes={classes}
+                            name={name}
+                            id={id}
+                        />
                     )
                 })
                 : ""

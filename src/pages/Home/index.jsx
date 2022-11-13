@@ -65,6 +65,7 @@ export default function Home() {
                     hidden={false}
                     isDisabled={false}
                     isRegistered
+                    id={trail.id}
                   />
                 ))}
               </div>

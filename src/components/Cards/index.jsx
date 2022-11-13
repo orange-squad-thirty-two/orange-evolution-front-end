@@ -37,7 +37,7 @@ export default function Cards({
           <CustomButtonSmall
             disabled={isDisabled}
             onClick={() => {
-              history.push('/trails');
+              history.push(`/trails/${id}`);
             }}
           >
             Ir

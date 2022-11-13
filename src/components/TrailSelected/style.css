@@ -72,3 +72,52 @@
     border-radius: 30px;
     background-color: var(--color-primary-theme);
 }
+
+
+@media (max-width: 850px) {
+    .title-trial {
+        margin: 51px 100px 31px 30px;
+        text-align: center;
+
+    }
+
+    .description-trial {
+        margin: 0 30px;
+        text-align: center;
+    }
+
+    .sub-title-trial {
+        margin: 30px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .div-trail {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        border-radius: 0px;
+        border: none;
+        padding: 0;
+    }
+
+    .div-progress {
+        margin: 50px;
+        margin-left: 30px;
+        text-align: center;
+    }
+
+    .progress-bar-100 {
+        width: 100%;
+    }
+
+    .div-btn-trails {
+        position: absolute;
+        right: 35px;
+        top: 50px;
+        border-radius: 20px;
+        background-color: var(--color-primary-text);
+        padding: 0px 3px 3px 0px;
+    }
+
+}

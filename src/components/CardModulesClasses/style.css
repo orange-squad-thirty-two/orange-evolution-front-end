@@ -48,3 +48,25 @@
 .div-classe-modules-span {
     position: relative;
 }
+
+
+@media (max-width: 850px) {
+    .div-modules-container {
+        width: 80%;
+        height: auto;
+        margin: auto;
+        padding: 0;
+        border-radius: 0;
+        margin-bottom: 30px;
+
+    }
+
+    .div-modules {
+        width: 100%;
+        height: auto;
+    }
+
+    .title-modules {
+        margin: 20px;
+    }
+}

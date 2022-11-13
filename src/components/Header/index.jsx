@@ -20,7 +20,7 @@ function Header({ trails }) {
 
     function logOutUser() {
         JsCookie.remove('token');
-        history.replace("/login")
+        history.replace("/")
         return
     };
 

@@ -19,7 +19,7 @@ export default function Cards({
       <div
         className={`${
           hidden ? 'hidden' : 'flex'
-        } md:flex flex-col mb-2  md:mr-3 justify-center items-center w-[216px] h-[305px] rounded-[30px] border border-[#353131]`}
+        } md:flex flex-col mb-3 md:mr-3 justify-center items-center w-[216px] h-[305px] rounded-[30px] border border-[#353131]`}
       >
         <div className={`${hidden ? 'hidden' : 'flex'} md:mt-2 sm:flex`}>
           <img className="w-[180px] h-[170px]" src={image} alt={altImage} />
@@ -37,10 +37,10 @@ export default function Cards({
           <CustomButtonSmall
             disabled={isDisabled}
             onClick={() => {
-              history.push('/trails');
+              history.push(`/trails/${id}`);
             }}
           >
-            Detalhes
+            Ir
           </CustomButtonSmall>
         ) : (
           <CustomButtonSmall disabled={isDisabled} onClick={() => functionCallBack(id)}>

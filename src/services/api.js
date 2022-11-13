@@ -20,7 +20,7 @@ export const createSelectTrails = async (data) => {
     { cursos: data },
     {
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     },
   );
@@ -31,7 +31,7 @@ export const createNewUser = async (data) => {
   const token = JsCookie.get('token');
   const user = await api.post('/users', data, {
     headers: {
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
   });
   return user.data;

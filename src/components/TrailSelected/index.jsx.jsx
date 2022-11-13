@@ -1,7 +1,7 @@
 import JsCookie from 'js-cookie';
 import JWT from 'jwt-decode';
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import iconProgress from '../../assets/icons/icon-progress.svg';
 import { useTrails } from '../../context/TrailsProvider';
 import { api, createSelectTrails } from "../../services/api";
@@ -10,6 +10,7 @@ import CardClassModules from "../CardModulesClasses";
 import './style.css';
 
 function TrailSelected() {
+    const history = useHistory();
     const token = JsCookie.get('token');
     const { id } = useParams()
     const [name, setName] = useState("");
@@ -68,7 +69,10 @@ function TrailSelected() {
                     setTrail(false);
                 }
             } catch (error) {
-                console.log(error)
+                if (error.response.status === 400) {
+                    history.replace(`/trails/${1}`)
+                    window.location.reload()
+                }
             }
         }
         getAllTrails(id)
@@ -81,7 +85,7 @@ function TrailSelected() {
                     : "0"}%`
             }
         }
-    }, [id, setClassesAll])
+    }, [id, setClassesAll, history])
 
     return (
         <div className="relative">

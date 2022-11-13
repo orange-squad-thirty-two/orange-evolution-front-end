@@ -9,7 +9,7 @@ function Header({ trails }) {
     const { id, modulesClasses } = useParams()
     const [name, setName] = useState("");
 
-    const histoty = useHistory()
+    const history = useHistory()
     useEffect(() => {
         function pathName() {
             const nameTrail = trails.find(trail => trail.id === Number(id))
@@ -20,7 +20,7 @@ function Header({ trails }) {
 
     function logOutUser() {
         JsCookie.remove('token');
-        histoty.replace("/login")
+        history.replace("/login")
         return
     };
 

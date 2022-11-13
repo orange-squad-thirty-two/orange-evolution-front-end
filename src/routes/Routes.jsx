@@ -8,27 +8,34 @@ import ModulesClasses from '../pages/ModulesClasses';
 import NotFound from '../pages/NotFound';
 import Register from '../pages/Register/Index';
 import Trails from '../pages/Trails';
-import { PrivateRouter } from './PrivateRouter';
+import { PrivateRouter, VerifyToken } from './PrivateRouter';
 
 export function Routes() {
     return (
-        <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/register" component={Register} />
-            <PrivateRouter>
-                <GlobalProvider>
-                    <TrailsProvider>
-                        <Route exact path="/trail/:id/:classeName/:modulesClasses"
-                            component={ModulesClasses} />
-                        <Route exact path="/trails/:id" component={Trails} />
-                    </TrailsProvider>
-                    <HomeProvider>
-                        <Route path="/home" component={Home} />
-                    </HomeProvider>
-                    <Route path="*" component={NotFound} />
-                </GlobalProvider>
-            </PrivateRouter>
-        </Switch>
+        <GlobalProvider>
+            <HomeProvider>
+                <TrailsProvider>
+                    <Switch>
+                        <VerifyToken exact path="/"  >
+                            <Login />
+                        </VerifyToken>
+                        <VerifyToken exact path="/register">
+                            <Register />
+                        </VerifyToken>
+                        <PrivateRouter exact path="/trail/:id/:classeName/:modulesClasses">
+                            <  ModulesClasses />
+                        </PrivateRouter>
+                        <PrivateRouter exact path="/trails/:id">
+                            <Trails />
+                        </PrivateRouter>
+                        <PrivateRouter exact path="/home">
+                            <Home />
+                        </PrivateRouter>
+                        <Route path="*" component={NotFound} />
+                    </Switch>
+                </TrailsProvider>
+            </HomeProvider>
+        </GlobalProvider>
     );
 }
 

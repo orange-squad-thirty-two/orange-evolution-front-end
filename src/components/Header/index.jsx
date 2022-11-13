@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
-import buttonPrev from '../../assets/icons/icon-prev.svg';
-import imageLogo from '../../assets/icons/icon-logo.svg';
 import JsCookie from 'js-cookie';
+import { useEffect, useState } from "react";
+import { Link, useHistory, useParams } from "react-router-dom";
+import imageLogo from '../../assets/icons/icon-logo.svg';
+import iconMenu from '../../assets/icons/icon-menu.svg';
+import buttonPrev from '../../assets/icons/icon-prev.svg';
 import "./style.css";
 
-function Header({ trails }) {
+function Header({ trails, showMenu, setShowMenu }) {
     const { id, modulesClasses } = useParams()
     const [name, setName] = useState("");
-
     const history = useHistory()
     useEffect(() => {
         function pathName() {
@@ -25,27 +25,38 @@ function Header({ trails }) {
     };
 
     return (
-        <header className="h-44 relative mt-10 ml-28 flex justify-between">
+        <header className="header">
+
+            {!showMenu &&
+                <img
+                    className='image-menu'
+                    src={iconMenu}
+                    alt="Clique para abrir o menu de navegação"
+                    onClick={() => setShowMenu(true)} />
+            }
             <div className="path-nav-header">
-                <span>Home</span>
+                <span className="btn-cursor" onClick={() => history.replace("/home")}> Home</span>
                 <span>&gt;</span>
-                <span>Trail</span>
+                <span className="btn-cursor" onClick={() => history.replace("/trails/1")}>Trilha</span>
                 <span>&gt;</span>
-                <span>{name}</span>
+                <span className="btn-cursor" onClick={() => history.replace(`/trails/${id}`)}>{name}</span>
                 <span>{modulesClasses && ">"}</span>
                 <span>{modulesClasses && "Aulas"}</span>
             </div>
-            {!modulesClasses &&
+            {
+                !modulesClasses &&
                 <Link className="absolute bottom-4" to="/home">
                     <img src={buttonPrev} alt="Clique para voltar" />
                 </Link>
             }
 
-            <img className="w-56 absolute top-2 right-80" src={imageLogo} alt="Imagem da logo escrito Orange Evolution" />
-            <div className="div-btn-trails absolute top-2 right-40">
+            <img className="image-logo" src={imageLogo} alt="Imagem da logo escrito Orange Evolution" />
+            <button onClick={() => logOutUser()} className="btn-log-out-header">Sair</button>
+            <div className="div-btn-trails-header">
                 <button onClick={() => logOutUser()} className="btn-trails trail-no-choose">Sair</button>
             </div>
-        </header>
+
+        </header >
     )
 }
 

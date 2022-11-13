@@ -38,7 +38,7 @@ function ModalClasse({ modulesClasses, classeSelected, handleStatusClasse,
             </h1>
             <div className="div-description-classe">
                 <h3>Conteúdo produzido pela {classeSelected.criador}</h3>
-                <h3>{classeSelected.duracao && "Tempo de Leitura: " + classeSelected.duracao}</h3>
+                <h3>{classeSelected.duracao && "Tempo de Aula: " + classeSelected.duracao}</h3>
                 <div className="relative">
                     <h3>Status
                         {classeSelected.status === "Concluido"

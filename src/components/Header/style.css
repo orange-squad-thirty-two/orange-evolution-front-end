@@ -1,4 +1,6 @@
 .path-nav-header {
     cursor: default;
     color: rgba(53, 49, 49, 0.7);
+    display: flex;
+    gap: 12px;
 }

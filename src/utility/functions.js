@@ -19,6 +19,5 @@ export function calculateProgress(array) {
         return classe.status.toLowerCase() === "concluido"
     })
     let progress = (100 / classesAll) * classesCompleted.length
-    console.log(progress)
     return progress
 }

@@ -6,8 +6,9 @@ import JsCookie from 'js-cookie';
 import "./style.css";
 
 function Header({ trails }) {
-    const { id } = useParams()
+    const { id, modulesClasses } = useParams()
     const [name, setName] = useState("");
+
     const histoty = useHistory()
     useEffect(() => {
         function pathName() {
@@ -26,12 +27,19 @@ function Header({ trails }) {
     return (
         <header className="h-44 relative mt-10 ml-28 flex justify-between">
             <div className="path-nav-header">
-                <span>Home &gt; </span> <span>Trail 	&gt;</span>  <span>{name}</span>
-
+                <span>Home</span>
+                <span>&gt;</span>
+                <span>Trail</span>
+                <span>&gt;</span>
+                <span>{name}</span>
+                <span>{modulesClasses && ">"}</span>
+                <span>{modulesClasses && "Aulas"}</span>
             </div>
-            <Link className="absolute bottom-4" to="/home">
-                <img src={buttonPrev} alt="Clique para voltar" />
-            </Link>
+            {!modulesClasses &&
+                <Link className="absolute bottom-4" to="/home">
+                    <img src={buttonPrev} alt="Clique para voltar" />
+                </Link>
+            }
 
             <img className="w-56 absolute top-2 right-80" src={imageLogo} alt="Imagem da logo escrito Orange Evolution" />
             <div className="div-btn-trails absolute top-2 right-40">

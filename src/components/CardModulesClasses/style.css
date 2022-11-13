@@ -28,3 +28,23 @@
     align-items: center;
     gap: 15px;
 }
+
+.flex-row {
+    display: flex;
+}
+
+.icon-check-classe-modules {
+    margin: 2px 0 0 10px;
+}
+
+.div-classe-modules {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: hidden;
+    text-overflow: clip;
+
+}
+
+.div-classe-modules-span {
+    position: relative;
+}

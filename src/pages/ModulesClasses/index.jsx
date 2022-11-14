@@ -39,7 +39,6 @@ function ModulesClasses() {
                 const response = await api.get(`/classes/${id}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-                console.log('rende');
                 if (response.data.length) {
                     const array = SplitArrayModules(response.data, 5);
                     const modulesSelected = array.slice(modulesClasses - 1, modulesClasses);

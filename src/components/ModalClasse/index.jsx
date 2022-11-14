@@ -26,7 +26,7 @@ function ModalClasse({ modulesClasses, classeSelected, handleStatusClasse,
     }
 
     return (
-        <div className="relative">
+        <div className="relative div-classe-mobile">
             <img
                 className="icon-btn-prev-classe"
                 onClick={() => navigate()}

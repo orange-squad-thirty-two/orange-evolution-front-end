@@ -40,7 +40,7 @@
 
 .path-nav-header-mobile {
     position: fixed;
-    z-index: 21;
+    z-index: 40;
     cursor: default;
     color: rgba(53, 49, 49, 0.7);
     display: flex;
@@ -75,6 +75,7 @@
 }
 
 @media(max-width: 850px) {
+
     .image-logo {
         margin: 0 auto;
     }

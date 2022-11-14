@@ -98,11 +98,11 @@ export default function Login() {
         >
           Entrar
         </CustomButton>
-        <p className="text-texto mt-4">
-          Ainda não possui conta?{' '}
-          <Link to="/register" className="text-titulo md:text-tema">
-            Clique aqui
-          </Link>
+        <p className="text-texto text-[15px] my-4">
+          Ainda não possui conta? <Link to="/register">Clique aqui</Link>
+        </p>
+        <p className="text-texto text-[15px] my-4">
+          Sou administrador. <Link to="/login/admin">Clique aqui</Link>
         </p>
       </div>
     </LayoutLoginRegister>

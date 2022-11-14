@@ -19,6 +19,7 @@ function TrailSelected() {
     const { setClassesAll } = useTrails();
     const [trail, setTrail] = useState(false);
     const [userData, setUserData] = useState(false);
+    const [barProgressState, setBarProgessState] = useState("0%");
 
     const [classes, setClasses] = useState([]);
     const [modules, setModules] = useState([]);
@@ -68,6 +69,7 @@ function TrailSelected() {
                 const trailsSelected = trailChoose.data.find(
                     (choose) => choose.curso_id === Number(id),
                 );
+                console.log(trailsSelected)
                 if (trailsSelected) {
                     setTrail(true);
                     handleProgress(classesTrail.data);
@@ -83,8 +85,7 @@ function TrailSelected() {
         function handleProgress(data) {
             if (!barProgress.current) return;
             if (data && barProgress.current !== null) {
-                barProgress.current.style.width = `${calculateProgress(data) ? calculateProgress(data) : '0'
-                    }%`;
+                setBarProgessState(`${calculateProgress(data) ? calculateProgress(data) : '0'}%`);
             }
         }
     }, [id, setClassesAll]);
@@ -118,7 +119,7 @@ function TrailSelected() {
                 <div className="div-progress">
                     <p>{userData.nome}, acompanhe seu progresso na trilha</p>
                     <div className="progress-bar-100">
-                        <div className="progress-bar" ref={barProgress}></div>
+                        <div className="progress-bar" ref={barProgress} style={{ width: barProgressState }}></div>
                         <img
                             className="icon-progress"
                             src={iconProgress}

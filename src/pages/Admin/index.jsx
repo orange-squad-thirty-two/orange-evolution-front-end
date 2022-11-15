@@ -15,14 +15,21 @@ export default function AdminPage() {
   const [isActiveAdm, setIsActiveAdm] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const { setDataClesses, trailIdSelected, setTrailIdSelected } = useAdmin();
+  const { setDataClesses, setInputValues, trailIdSelected, setTrailIdSelected } =
+    useAdmin();
 
   const handleClick = (info) => {
     if (info === 'add') {
       setIsActiveGer(false);
       setIsActiveAdm(true);
       setShowModal(true);
-      setDataClesses();
+      setInputValues({
+        titulo: '',
+        tipo: '',
+        criador: '',
+        url: '',
+        duracao: '',
+      });
     } else {
       setIsActiveAdm(false);
       setIsActiveGer(true);

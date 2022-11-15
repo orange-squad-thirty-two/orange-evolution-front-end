@@ -5,7 +5,7 @@ const URI_DEV = 'http://localhost:3333';
 const URI_PROD = 'https://app-orange-evolution.herokuapp.com/';
 
 export const api = axios.create({
-  baseURL: URI_PROD,
+  baseURL: URI_DEV,
 });
 
 export const loginRequest = async (data) => {

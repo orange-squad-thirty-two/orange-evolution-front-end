@@ -41,9 +41,9 @@ export default function FormAdmin({ setShowModal, dataTrails, isEdit }) {
         const findClasses = localArray.findIndex(
           (item) => item.id === dataClassesEdit.idAula,
         );
-        console.log(findClasses);
-        const result = localArray.splice(findClasses, 1, data[0]);
-        console.log(result);
+
+        localArray.splice(findClasses, 1, data[0]);
+
         return setDataClesses([...localArray]);
       }
       const curso = await createNewClasses(inputValues, valueCursoId);
@@ -166,7 +166,7 @@ export default function FormAdmin({ setShowModal, dataTrails, isEdit }) {
           type="submit"
           onClick={handleSubmit}
         >
-          Cadastrar
+          Salvar
         </button>
       </div>
     </>

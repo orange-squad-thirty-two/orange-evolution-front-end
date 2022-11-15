@@ -1,0 +1,123 @@
+.title-trial {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    margin: 51px 0 31px 76px;
+    cursor: default;
+}
+
+.description-trial {
+    margin: 0 107px;
+}
+
+.sub-title-trial {
+    margin: 0 107px 30px 107px;
+    font-size: 20px;
+}
+
+.div-btn-trails {
+    position: absolute;
+    right: 35px;
+    border-radius: 20px;
+    background-color: var(--color-primary-text);
+    padding: 0px 3px 3px 0px;
+}
+
+.btn-trails {
+    width: 80px;
+    height: 28px;
+    font-size: 12px;
+    line-height: 100%;
+    border: 1px solid var(--color-primary-text);
+    border-radius: 20px;
+}
+
+.trail-choose {
+    cursor: default;
+    background-color: var(--color-primary-title);
+}
+
+.trail-no-choose {
+    background-color: var(--color-scale-gray-11);
+}
+
+.div-progress {
+    margin: 60px 107px 30px 107px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.progress-bar-100 {
+    position: relative;
+    margin-top: 30px;
+    width: 500.71px;
+    height: 12px;
+    border: 0.5px solid var(--color-primary-text);
+    border-radius: 30px;
+    background-color: var(--color-scale-gray-9);
+}
+
+.icon-progress {
+    position: absolute;
+    right: -35px;
+    top: -300%
+}
+
+.progress-bar {
+    width: 0%;
+    height: 10px;
+    border-radius: 30px;
+    background-color: var(--color-primary-theme);
+}
+
+
+@media (max-width: 850px) {
+    .title-trial {
+        margin: 51px 100px 31px 30px;
+        text-align: center;
+
+    }
+
+    .description-trial {
+        margin: 0 30px;
+        text-align: center;
+    }
+
+    .sub-title-trial {
+        margin: 30px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .div-trail {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        border-radius: 0px;
+        border: none;
+        padding: 0;
+    }
+
+    .div-progress {
+        margin: 50px;
+        margin-left: 30px;
+        text-align: center;
+    }
+
+    .progress-bar-100 {
+        width: 100%;
+    }
+
+    .div-btn-trails {
+        position: absolute;
+        right: 35px;
+        top: 50px;
+        border-radius: 20px;
+        background-color: var(--color-primary-text);
+        padding: 0px 3px 3px 0px;
+    }
+
+}

@@ -1,0 +1,60 @@
+.div-delete-classes {
+  position: absolute;
+  width: 159px;
+  height: 46px;
+
+  top: 0px;
+  /* right: -10px; */
+  color: var(--color-scale-gray-10);
+  background: var(--color-primary-text);
+  border-radius: 4px;
+
+  z-index: 1;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 12px;
+
+  padding: 7px 15px 8px 15px;
+}
+
+.img-set-balon {
+  position: absolute;
+  top: -10px;
+  right: 14px;
+}
+
+.btn-yes {
+  width: 37px;
+  height: 15px;
+  color: var(--color-primary-title);
+  cursor: pointer;
+
+  background: var(--color-scale-gray-10);
+  border-radius: 4px;
+
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 11px;
+  text-align: center;
+}
+
+.btn-no {
+  width: 37px;
+  height: 15px;
+  color: var(--color-scale-gray-10);
+
+  cursor: pointer;
+  background: var(--color-primary-title);
+  border-radius: 4px;
+
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 11px;
+  text-align: center;
+}
+
+.btns-yes-no {
+  display: flex;
+  gap: 7px;
+  margin-top: 4px;
+}

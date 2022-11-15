@@ -1,0 +1,107 @@
+a {
+    white-space: nowrap;
+}
+
+aside {
+    width: 120px;
+}
+
+.is-active {
+    width: 106px;
+    height: 48px;
+    left: 17px;
+    top: 233px;
+    text-align: center;
+    background: var(--color-scale-gray-8);
+    border-top: 1px solid var(--color-primary-text);
+    border-left: 1px solid var(--color-primary-text);
+    border-bottom: 1px solid var(--color-primary-text);
+    border-right: 2px solid var(--color-scale-gray-8);
+    border-radius: 30px 0 0 30px;
+    margin: 20px 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+
+a button {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inactive {
+    width: 100px;
+    height: 25px;
+    background: var(--color-scale-gray-8);
+    text-align: center;
+    border: 1px solid var(--color-primary-text);
+    border-radius: 20px 0 0 20px;
+    margin: 20px 0;
+}
+
+.button-trails {
+    padding: 4px 10px;
+    background: var(--color-scale-gray-9);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin: 34px 0 0 26px;
+}
+
+@media(max-width: 850px) {
+
+    .aside {
+        display: none;
+    }
+
+    .aside-mobile {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 30;
+        width: 90%;
+        border-radius: 0px 10px 10px 0px;
+        height: 500px;
+        background-color: var(--color-scale-gray-11);
+        border: 1px solid var(--color-primary-text);
+        box-shadow: -10px 10px 0 var(--color-primary-title);
+
+    }
+
+    .div-nav-desktop {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        gap: 30px;
+        position: relative;
+
+    }
+
+    .icon-close-modal-menu {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .button-trails-mobile,
+    .is-active-mobile,
+    .inactive-mobile {
+        color: var(--color-scale-gray-0);
+
+        text-align: center;
+    }
+
+    .is-active-mobile {
+        text-decoration: underline 2px solid var(--color-primary-title);
+    }
+
+    .inactive-mobile {
+        text-decoration: none;
+    }
+}

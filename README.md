@@ -1,5 +1,13 @@
 # Projeto do desafio do Hackathon - Programa de Formação Season 4
 
+## Orange Evolution
+
+Aplicação com o objetivo de disponibilizar cursos gratuitos para quem deseja estudar sobre tecnologis. Aplicação conta inicialmente com 3 trilhas:
+
+- Desenvolvimento Full Stack
+- Ux/Ui Designer
+- QA (Quality Assurance).
+
 ## Requisitos
 
 - NodeJs v16.15.1

@@ -1,8 +1,17 @@
+import { useState } from 'react';
 import { FaEdit, FaTrashAlt, FaExternalLinkAlt } from 'react-icons/fa';
 import { useAdmin } from '../../context/AdminProvider';
+import PopUpDelete from '../PopUpDelete';
 
-export default function TableAdmin() {
-  const { dataClasses } = useAdmin();
+export default function TableAdmin({ trailIdSelected, setShowModal, setIsEdit }) {
+  const { dataClasses, setDataClassesEdit } = useAdmin();
+
+  const handleEditClasses = (data) => {
+    setShowModal(true);
+    setIsEdit(true);
+    setDataClassesEdit(data);
+  };
+
   return (
     <div className="mt-5">
       <div className="md:w-full m-auto md:m-0">
@@ -44,12 +53,22 @@ export default function TableAdmin() {
                     </td>
                     <td
                       className="max-w-xs truncate text-dark font-medium 
-                      text-base py-2 px-2  border border-texto"
+                      text-base py-2 px-2  border border-texto relative flex justify-center"
                     >
-                      <FaTrashAlt size={25} className="m-auto fill-titulo" />
+                      <ButtonDelete id={item.id} trail={trailIdSelected} />
                     </td>
                     <td className="max-w-xs text-center truncate text-dark font-medium text-base py-2 px-2 border border-texto">
-                      <FaEdit size={25} className="m-auto fill-tema" />
+                      <ButtonEdit
+                        handleEditClasses={handleEditClasses}
+                        idAula={item.id}
+                        titulo={item.titulo}
+                        trial={trailIdSelected}
+                        autor={item.criador}
+                        tipo={item.tipo}
+                        duracao={item.duracao}
+                        link={item.url}
+                        idCurso={trailIdSelected}
+                      />
                     </td>
                   </tr>
                 ))}
@@ -61,3 +80,51 @@ export default function TableAdmin() {
     </div>
   );
 }
+
+const ButtonDelete = ({ id, trail }) => {
+  const [popupDelet, setPopupDelet] = useState(false);
+
+  return (
+    <>
+      {popupDelet ? (
+        <PopUpDelete setPopupDelet={setPopupDelet} id={id} trial={trail} />
+      ) : null}
+      <button type="button" onClick={() => setPopupDelet(true)}>
+        <FaTrashAlt size={25} className="m-auto fill-titulo" />
+      </button>
+    </>
+  );
+};
+
+const ButtonEdit = ({
+  handleEditClasses,
+  titulo,
+  trial,
+  autor,
+  tipo,
+  duracao,
+  link,
+  idCurso,
+  idAula,
+}) => {
+  return (
+    <>
+      <button
+        onClick={() =>
+          handleEditClasses({
+            titulo,
+            trial,
+            autor,
+            tipo,
+            duracao,
+            link,
+            idAula,
+            idCurso,
+          })
+        }
+      >
+        <FaEdit size={25} className="m-auto fill-tema" />
+      </button>
+    </>
+  );
+};

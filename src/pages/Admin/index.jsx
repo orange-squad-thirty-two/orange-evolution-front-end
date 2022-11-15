@@ -14,7 +14,8 @@ export default function AdminPage() {
   const [isActiveGer, setIsActiveGer] = useState(true);
   const [isActiveAdm, setIsActiveAdm] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { setDataClesses } = useAdmin();
+  const [isEdit, setIsEdit] = useState(false);
+  const { setDataClesses, trailIdSelected, setTrailIdSelected } = useAdmin();
 
   const handleClick = (info) => {
     if (info === 'add') {
@@ -36,6 +37,7 @@ export default function AdminPage() {
         },
       });
       setDataClesses(response.data);
+      setTrailIdSelected(id);
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +45,12 @@ export default function AdminPage() {
 
   return (
     <div className="">
-      <Modal isShow={showModal} setShowModal={setShowModal} dataTrails={dataTrails} />
+      <Modal
+        isShow={showModal}
+        setShowModal={setShowModal}
+        dataTrails={dataTrails}
+        isEdit={isEdit}
+      />
       <HeaderAdmin dataTrails={dataTrails} />
       <div className="md:flex w-full h-auto min-h-screen md:border-t md:border-texto">
         <div className="hidden md:flex flex-col border-r border-texto w-[280px] p-2">
@@ -85,7 +92,7 @@ export default function AdminPage() {
             <div className="w-full flex justify-center md:justify-start py-3">
               <div className="w-[50%] md:w-[40%] flex md:justify-center border-b border-r border-texto p-1">
                 <button
-                  className={`text-[12px] text-texto ${
+                  className={`text-[12px] md:text-base text-texto ${
                     isActiveGer ? 'border-b border-tema' : ''
                   }`}
                   onClick={() => handleClick('ger')}
@@ -95,7 +102,7 @@ export default function AdminPage() {
               </div>
               <div className="w-[30%] md:w-[30%] flex justify-center border-b border-text p-1">
                 <button
-                  className={`text-[12px] text-texto ${
+                  className={`text-[12px] md:text-base text-texto ${
                     isActiveAdm ? 'border-b border-tema' : ''
                   }`}
                   onClick={() => handleClick('add')}
@@ -106,7 +113,11 @@ export default function AdminPage() {
             </div>
           </div>
           <div className="px-4 md:w-full">
-            <TableAdmin />
+            <TableAdmin
+              trailIdSelected={trailIdSelected}
+              setShowModal={setShowModal}
+              setIsEdit={setIsEdit}
+            />
           </div>
         </div>
       </div>

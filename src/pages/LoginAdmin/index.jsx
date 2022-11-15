@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import InputCustom from '../../components/CustomInput';
 import LayoutLoginRegister from '../../components/LayoutLoginRegister';
-import { loginRequest } from '../../services/api';
+import { loginAdminRequest } from '../../services/api';
 import { Link, useHistory } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton';
 
@@ -19,7 +19,7 @@ const CONFIG_TOAST = {
   theme: 'light',
 };
 
-export default function Login() {
+export default function LoginAdmin() {
   const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
   const [inputEmail, setInputEmail] = useState('');
@@ -27,9 +27,9 @@ export default function Login() {
 
   const handleSignIn = async () => {
     try {
-      const user = await loginRequest({ email: inputEmail, senha: inputPassword });
+      const user = await loginAdminRequest({ email: inputEmail, senha: inputPassword });
       JsCookie.set('token', user.token);
-      history.push('/home');
+      history.push('/admin');
     } catch (error) {
       if (error.response.data.message) {
         return toast.error(error.response.data.message, CONFIG_TOAST);
@@ -46,8 +46,8 @@ export default function Login() {
       <ToastContainer />
       <div className="flex flex-col justify-center items-center h-screen">
         <div className="mb-12">
-          <p className="text-[25px] text-center">Que bom vê-lo</p>
-          <p className="text-[25px] text-center">novamente!</p>
+          <p className="text-[25px] text-center">Acesso restrito</p>
+          <p className="text-[25px] text-center">à administradores!</p>
         </div>
 
         <div>
@@ -98,11 +98,18 @@ export default function Login() {
         >
           Entrar
         </CustomButton>
-        <p className="text-texto text-[15px] my-4">
-          Ainda não possui conta? <Link to="/register">Clique aqui</Link>
+        <p className="text-texto my-4 text-[15px]">
+          Ainda não possui conta?{' '}
+          <Link to="/register" className="text-texto md:text-tema">
+            Clique aqui
+          </Link>
         </p>
-        <p className="text-texto text-[15px] my-4">
-          Sou administrador. <Link to="/login/admin">Clique aqui</Link>
+        <p className="text-texto text-[15px]">
+          Não sou Administrador.
+          <Link to="/" className="text-texto md:text-tema">
+            {' '}
+            Clique aqui
+          </Link>{' '}
         </p>
       </div>
     </LayoutLoginRegister>

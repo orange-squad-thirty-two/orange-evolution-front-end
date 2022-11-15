@@ -83,12 +83,7 @@ function TrailSelected() {
         getAllTrails(id);
 
         function handleProgress(data) {
-            console.log("Entrou na função")
-            /*         if (!barProgress.current) return; */
-            console.log(barProgress)
             if (data) {
-                console.log(calculateProgress(data).toFixed(0));
-                /*barProgress.current.style.width= `${calculateProgress(data)}`*/
                 const progress = calculateProgress(data) ? `${calculateProgress(data).toFixed(0)}% ` : '0%'
                 setBarProgessState(progress);
             }

@@ -84,7 +84,7 @@ function TrailSelected() {
 
         function handleProgress(data) {
             console.log("Entrou na função")
-            if (!barProgress.current) return;
+            /*         if (!barProgress.current) return; */
             console.log(barProgress)
             if (data) {
                 console.log(calculateProgress(data).toFixed(0));

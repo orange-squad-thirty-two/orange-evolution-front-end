@@ -10,9 +10,15 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="md:hidden flex h-12 w-full px-3 justify-between items-center">
-      <div></div>
-      <button onClick={handleExitApp}>Sair</button>
-    </nav>
+    <header className="hidden md:flex">
+      <dir className="w-full flex justify-evenly items-center mt-10 p-1 md:justify-center md:items-center">
+        <button
+          onClick={() => handleExitApp()}
+          className="hidden md:flex absolute right-36"
+        >
+          Sair
+        </button>
+      </dir>
+    </header>
   );
 }

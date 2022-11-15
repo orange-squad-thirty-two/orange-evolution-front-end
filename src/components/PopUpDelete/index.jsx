@@ -5,7 +5,7 @@ import { api } from '../../services/api';
 import './style.css';
 
 function PopUpDelete({ setPopupDelet, id, trial }) {
-  const { setDataClesses } = useAdmin();
+  const { setDataClesses, dataClasses } = useAdmin();
 
   async function handleDelete(id) {
     const token = JsCookie.get('token');
@@ -14,7 +14,7 @@ function PopUpDelete({ setPopupDelet, id, trial }) {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log(response);
-      setDataClesses([]);
+      setDataClesses(dataClasses.filter((item) => item.id !== id));
       setPopupDelet(false);
     } catch (error) {
       console.log(error);

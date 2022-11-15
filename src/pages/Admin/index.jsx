@@ -22,6 +22,7 @@ export default function AdminPage() {
       setIsActiveGer(false);
       setIsActiveAdm(true);
       setShowModal(true);
+      setDataClesses();
     } else {
       setIsActiveAdm(false);
       setIsActiveGer(true);

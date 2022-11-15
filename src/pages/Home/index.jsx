@@ -9,6 +9,7 @@ import { useHomeContext } from '../../context/HomeProvider';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import Cards from '../../components/Cards';
 import NavBar from '../../components/NavBar';
+import imageLogo from '../../assets/icons/icon-logo.svg';
 
 export default function Home() {
   const [userData, setUserData] = useState('');
@@ -25,16 +26,17 @@ export default function Home() {
   useEffect(() => {
     const compareTrilha = () => {
       if (dataTrails.data !== null) {
+        console.log(dataSelectTrails.data);
         const result = dataTrails.data?.filter((item) =>
-          dataSelectTrails.data?.find((t) => t.id === item.id),
+          dataSelectTrails.data?.find((t) => t.curso_id === item.id),
         );
-
+        console.log(result);
         return setSelectTrailsData(result);
       }
       return [];
     };
     compareTrilha();
-  }, [dataSelectTrails.data, dataTrails.data]);
+  }, [dataSelectTrails.data, dataTrails.data, setSelectTrailsData]);
 
   return (
     <>
@@ -99,3 +101,21 @@ export default function Home() {
     </>
   );
 }
+
+const HeaderHome = () => {
+  const logOutUser = () => {};
+  return (
+    <header className="flex">
+      <dir className="w-full flex justify-evenly items-center mt-10 p-1 md:justify-center md:items-center">
+        <img
+          className="md:w-auto"
+          src={imageLogo}
+          alt="Imagem da logo escrito Orange Evolution"
+        />
+        <button onClick={() => logOutUser()} className="hidden md:flex absolute right-36">
+          Sair
+        </button>
+      </dir>
+    </header>
+  );
+};

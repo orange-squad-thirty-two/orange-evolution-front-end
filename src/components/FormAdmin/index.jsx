@@ -5,7 +5,8 @@ import { createNewClasses, updateClasses } from '../../services/api';
 import CustomInput from '../CustomInput';
 
 export default function FormAdmin({ setShowModal, dataTrails, isEdit }) {
-  const { dataClassesEdit, setInputValues, inputValues, setDataClesses } = useAdmin();
+  const { dataClassesEdit, setInputValues, inputValues, setDataClesses, dataClasses } =
+    useAdmin();
 
   const [valueCursoId, setValueCursoId] = useState(1);
 
@@ -23,15 +24,27 @@ export default function FormAdmin({ setShowModal, dataTrails, isEdit }) {
 
     try {
       if (isEdit) {
-        await updateClasses(dataClassesEdit.idCurso, dataClassesEdit.idAula, {
-          titulo: inputValues.titulo,
-          tipo: inputValues.tipo,
-          criador: inputValues.criador,
-          url: inputValues.url,
-          duracao: inputValues.duracao,
-        });
+        const data = await updateClasses(
+          dataClassesEdit.idCurso,
+          dataClassesEdit.idAula,
+          {
+            titulo: inputValues.titulo,
+            tipo: inputValues.tipo,
+            criador: inputValues.criador,
+            url: inputValues.url,
+            duracao: inputValues.duracao,
+          },
+        );
         setShowModal(false);
-        return setDataClesses([]);
+        const localArray = [...dataClasses];
+
+        const findClasses = localArray.findIndex(
+          (item) => item.id === dataClassesEdit.idAula,
+        );
+        console.log(findClasses);
+        const result = localArray.splice(findClasses, 1, data[0]);
+        console.log(result);
+        return setDataClesses([...localArray]);
       }
       const curso = await createNewClasses(inputValues, valueCursoId);
       console.log(curso);
@@ -40,7 +53,7 @@ export default function FormAdmin({ setShowModal, dataTrails, isEdit }) {
       console.log(error);
     }
   };
-
+  // console.log(dataClasses);
   return (
     <>
       <div className="relative md:p-6 flex-auto">

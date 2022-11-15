@@ -6,7 +6,7 @@ const Modal = ({ isShow, setShowModal, dataTrails, isEdit }) => {
   const { inputValues, setInputValues, dataClassesEdit } = useAdmin();
   useEffect(() => {
     if (isEdit) {
-      setInputValues({
+      return setInputValues({
         ...inputValues,
         titulo: dataClassesEdit.titulo,
         tipo: dataClassesEdit.tipo,
@@ -15,6 +15,13 @@ const Modal = ({ isShow, setShowModal, dataTrails, isEdit }) => {
         duracao: dataClassesEdit.duracao,
       });
     }
+    return setInputValues({
+      titulo: '',
+      tipo: '',
+      criador: '',
+      url: '',
+      duracao: '',
+    });
   }, [isEdit]);
 
   return (

@@ -1,6 +1,6 @@
 # Projeto do desafio do Hackathon - Programa de Formação Season 4
 
-## Orange Evolution
+## Orange Evolution - Front-end
 
 Aplicação com o objetivo de disponibilizar cursos gratuitos para quem deseja estudar sobre tecnologis. Aplicação conta inicialmente com 3 trilhas:
 

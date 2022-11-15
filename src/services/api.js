@@ -2,10 +2,10 @@ import axios from 'axios';
 import JsCookie from 'js-cookie';
 
 const URI_DEV = 'http://localhost:3333';
-const URI_PROD = '';
+const URI_PROD = 'https://app-orange-evolution.herokuapp.com/';
 
 export const api = axios.create({
-  baseURL: URI_DEV,
+  baseURL: URI_PROD,
 });
 
 export const loginRequest = async (data) => {

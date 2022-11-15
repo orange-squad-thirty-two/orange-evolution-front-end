@@ -11,7 +11,7 @@ const token = JsCookie.get('token');
 export default function HeaderAdmin({ dataTrails }) {
   const history = useHistory();
   const [showSlide, setShowSlide] = useState(true);
-  const { setDataClesses } = useAdmin();
+  const { setDataClesses, setTrailIdSelected } = useAdmin();
 
   function logOutUser() {
     JsCookie.remove('token');
@@ -28,6 +28,7 @@ export default function HeaderAdmin({ dataTrails }) {
         },
       });
       setDataClesses(response.data);
+      setTrailIdSelected(id);
       setShowSlide(true);
     } catch (error) {
       console.log(error);

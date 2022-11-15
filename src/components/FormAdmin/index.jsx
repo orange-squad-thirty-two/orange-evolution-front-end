@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import { createNewClasses } from '../../services/api';
+import { useAdmin } from '../../context/AdminProvider';
+import { createNewClasses, updateClasses } from '../../services/api';
 
 import CustomInput from '../CustomInput';
 
-export default function FormAdmin({ setShowModal, dataTrails }) {
-  const [inputValues, setInputValues] = useState({
-    titulo: '',
-    tipo: '',
-    criador: '',
-    url: '',
-    duracao: '',
-  });
+export default function FormAdmin({ setShowModal, dataTrails, isEdit }) {
+  const { dataClassesEdit, setInputValues, inputValues, setDataClesses } = useAdmin();
+
   const [valueCursoId, setValueCursoId] = useState(1);
 
   const handleInputChange = (envet) => {
     const name = envet.target.name;
+
     setInputValues({
       ...inputValues,
       [name]: envet.target.value,
@@ -23,8 +20,19 @@ export default function FormAdmin({ setShowModal, dataTrails }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('inputValues');
+
     try {
+      if (isEdit) {
+        await updateClasses(dataClassesEdit.idCurso, dataClassesEdit.idAula, {
+          titulo: inputValues.titulo,
+          tipo: inputValues.tipo,
+          criador: inputValues.criador,
+          url: inputValues.url,
+          duracao: inputValues.duracao,
+        });
+        setShowModal(false);
+        return setDataClesses([]);
+      }
       const curso = await createNewClasses(inputValues, valueCursoId);
       console.log(curso);
       setShowModal(false);

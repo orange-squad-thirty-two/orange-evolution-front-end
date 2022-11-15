@@ -1,12 +1,28 @@
+import { useEffect } from 'react';
+import { useAdmin } from '../../context/AdminProvider';
 import FormAdmin from '../FormAdmin';
 
-const Modal = ({ isShow, setShowModal, dataTrails }) => {
+const Modal = ({ isShow, setShowModal, dataTrails, isEdit }) => {
+  const { inputValues, setInputValues, dataClassesEdit } = useAdmin();
+  useEffect(() => {
+    if (isEdit) {
+      setInputValues({
+        ...inputValues,
+        titulo: dataClassesEdit.titulo,
+        tipo: dataClassesEdit.tipo,
+        criador: dataClassesEdit.autor,
+        url: dataClassesEdit.link,
+        duracao: dataClassesEdit.duracao,
+      });
+    }
+  }, [isEdit]);
+
   return (
     <>
       {isShow ? (
         <>
           <div
-            className="md:w-[30%] md:h-[60%] m-auto border flex justify-center
+            className="md:w-[30%] md:h-[75%] m-auto border flex justify-center
            bg-[#ffffff] items-center overflow-x-hidden overflow-y-auto
            fixed inset-0 z-50 outline-none focus:outline-none rounded-lg"
           >
@@ -17,8 +33,8 @@ const Modal = ({ isShow, setShowModal, dataTrails }) => {
               >
                 <div
                   className="flex justify-evenly items-center md:items-end 
-                  md:justify-between p-4 md:p-5 border-b 
-                  border-solid border-tema rounded-t "
+                    md:justify-between p-4 md:p-5 border-b
+                    border-solid border-tema rounded-t "
                 >
                   <h3 className="text-3xl font-semibold">Cadastro de aula</h3>
                   <button
@@ -26,14 +42,18 @@ const Modal = ({ isShow, setShowModal, dataTrails }) => {
                     onClick={() => setShowModal(false)}
                   >
                     <span
-                      className="text-texto opacity-7 md:h-6 md:w-6 text-xl 
+                      className="text-texto opacity-7  md:w-6 text-xl 
                       block bg-gray-400 py-0 rounded-full"
                     >
                       x
                     </span>
                   </button>
                 </div>
-                <FormAdmin setShowModal={setShowModal} dataTrails={dataTrails} />
+                <FormAdmin
+                  setShowModal={setShowModal}
+                  dataTrails={dataTrails}
+                  isEdit={isEdit}
+                />
               </div>
             </div>
           </div>

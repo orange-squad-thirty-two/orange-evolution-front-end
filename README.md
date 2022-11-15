@@ -67,6 +67,19 @@ Start na aplicação
   npm start
 ```
 
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+
+- Renomei o arquivo `.env.exemple` para `.env.development.local`
+
+- Altere os valores das variáveis para os valores que você usa no banco de dados que esta instalado na sua máquina
+
+```bash
+REACT_APP_BASE_URI=
+
+```
+
 Observação: Para rodar a aplicação front-end é preciso que a API esteja rodando. Seguir passos do repositório do [back-end](https://github.com/orange-squad-thirty-two/orange-evolution-back-end).
 
 ## Autor

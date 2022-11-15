@@ -51,3 +51,13 @@ export const createNewClasses = async (data, curso_id) => {
   });
   return user.data;
 };
+
+export const updateClasses = async (curso_id, aula_id, data) => {
+  const token = JsCookie.get('token');
+  const user = await api.put(`/classes/${curso_id}/${aula_id}`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return user.data;
+};
